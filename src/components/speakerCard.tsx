@@ -14,14 +14,43 @@ export default function SpeakerCard({ speaker, title, isLoading = true }: Speake
 
     if (isLoading) {
         return (
-            <div className="group relative overflow-hidden border-2 border-white rounded-xl w-64 h-[350px] bg-gray-200 animate-pulse">
-                <Skeleton height={320} className="rounded-t-xl" />
-                <div className="p-4 space-y-2">
-                    <Skeleton height={20} width="75%" />
-                    <Skeleton height={16} width="50%" />
-                </div>
-                <div className="mt-auto p-4">
-                    <Skeleton height={32} width="33%" />
+            <div className="
+            overflow-hidden
+            rounded-xl
+            border border-zinc-800
+            bg-zinc-900
+            w-[260px]
+            ">
+
+                <Skeleton
+                    height={320}
+                    baseColor="#18181b"
+                    highlightColor="#27272a"
+                />
+
+                <div className="p-4 space-y-3">
+
+                    <Skeleton
+                        height={24}
+                        width="80%"
+                        baseColor="#18181b"
+                        highlightColor="#27272a"
+                    />
+
+                    <Skeleton
+                        height={14}
+                        width="60%"
+                        baseColor="#18181b"
+                        highlightColor="#27272a"
+                    />
+
+                    <Skeleton
+                        height={36}
+                        width="40%"
+                        borderRadius={8}
+                        baseColor="#dc2626"
+                        highlightColor="#ef4444"
+                    />
                 </div>
             </div>
         );
