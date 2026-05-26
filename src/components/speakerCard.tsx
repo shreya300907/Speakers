@@ -1,13 +1,31 @@
 "use client";
 import { useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 type SpeakerCardProps = {
     speaker: string;
     title: string;
+    isLoading?: boolean;
 };
 
-export default function SpeakerCard({ speaker, title }: SpeakerCardProps) {
+export default function SpeakerCard({ speaker, title, isLoading = true }: SpeakerCardProps) {
     const [isActive, setIsActive] = useState(false);
+
+    if (isLoading) {
+        return (
+            <div className="group relative overflow-hidden border-2 border-white rounded-xl w-64 h-[350px] bg-gray-200 animate-pulse">
+                <Skeleton height={320} className="rounded-t-xl" />
+                <div className="p-4 space-y-2">
+                    <Skeleton height={20} width="75%" />
+                    <Skeleton height={16} width="50%" />
+                </div>
+                <div className="mt-auto p-4">
+                    <Skeleton height={32} width="33%" />
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div

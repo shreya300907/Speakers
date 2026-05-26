@@ -24,7 +24,7 @@ export default function Home() {
           </h1>
         </div>
         <div>
-          <p className="mx-3 md:mx-5 sm:mx-4 font-[20] text-sm sm:text-xl md:text-2xl text-white">
+          <p className="mx-3 md:mx-5 sm:mx-4 font-thin text-sm sm:text-xl md:text-2xl text-white">
             Thinkers. Doers. Idea-generators. These are the speakers who have delivered a talk featured on TEDxIITP. These are the people who brought TEDx to life in IITP.
           </p>
         </div>
