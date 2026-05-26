@@ -9,29 +9,30 @@ export default function SearchBar() {
     const [reqSpeakers, setSpeakers] = useState(speakers);
     const [inputData, setInputData] = useState("");
     const [loading, setLoading] = useState(false);
-    let handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const text = event.target.value;
         setInputData(text);
         setLoading(true);
-        speakerServices.getSpeakersByName(text).then(
-            (result) => {
-                setSpeakers(result);
-                setLoading(false);
-            }
-        );
+        const result = await speakerServices.getSpeakersByName(text);
+        setSpeakers(result);
+        setLoading(false);
     }
 
-    const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleSelectChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
         const filter = event.target.value;
         setLoading(true);
         if (filter === "") {
-            speakerServices.getSpeakers().then((result) => setSpeakers(result));
+            const result = await speakerServices.getSpeakers()
+            setSpeakers(result);
         } else if (filter === "currYear") {
-            speakerServices.getCurrentSpeakers().then((result) => setSpeakers(result));
+            const result = await speakerServices.getCurrentSpeakers()
+            setSpeakers(result);
         } else if (filter === "past") {
-            speakerServices.getPastSpeakers().then((result) => setSpeakers(result));
+            const result = await speakerServices.getPastSpeakers()
+            setSpeakers(result);
         } else {
-            speakerServices.getSpeakersByYear(filter).then((result) => setSpeakers(result));
+            const result = await speakerServices.getSpeakersByYear(filter)
+            setSpeakers(result);
         }
         setLoading(false);
     }
