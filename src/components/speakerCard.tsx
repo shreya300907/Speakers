@@ -14,13 +14,7 @@ export default function SpeakerCard({ speaker, title, isLoading = true }: Speake
 
     if (isLoading) {
         return (
-            <div className="
-            overflow-hidden
-            rounded-xl
-            border border-zinc-800
-            bg-zinc-900
-            w-[260px]
-            ">
+            <div className=" overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 w-[260px] ">
 
                 <Skeleton
                     height={320}
@@ -48,8 +42,8 @@ export default function SpeakerCard({ speaker, title, isLoading = true }: Speake
                         height={36}
                         width="40%"
                         borderRadius={8}
-                        baseColor="#dc2626"
-                        highlightColor="#ef4444"
+                        baseColor="#18181b"
+                        highlightColor="#27272a"
                     />
                 </div>
             </div>

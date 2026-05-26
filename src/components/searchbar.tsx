@@ -8,18 +8,22 @@ import { speakerServices } from "@/services/speakerServices";
 export default function SearchBar() {
     const [reqSpeakers, setSpeakers] = useState(speakers);
     const [inputData, setInputData] = useState("");
+    const [loading, setLoading] = useState(false);
     let handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const text = event.target.value;
         setInputData(text);
+        setLoading(true);
         speakerServices.getSpeakersByName(text).then(
             (result) => {
                 setSpeakers(result);
+                setLoading(false);
             }
         );
     }
 
     const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const filter = event.target.value;
+        setLoading(true);
         if (filter === "") {
             speakerServices.getSpeakers().then((result) => setSpeakers(result));
         } else if (filter === "currYear") {
@@ -29,6 +33,7 @@ export default function SearchBar() {
         } else {
             speakerServices.getSpeakersByYear(filter).then((result) => setSpeakers(result));
         }
+        setLoading(false);
     }
 
     return (
@@ -56,7 +61,7 @@ export default function SearchBar() {
                     </select>
                 </div>
             </div>
-            <SpeakerSection speakers={reqSpeakers} />
+            <SpeakerSection speakers={reqSpeakers} isLoading={loading} />
         </>
     );
 }
