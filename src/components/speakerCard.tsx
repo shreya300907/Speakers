@@ -9,7 +9,7 @@ type SpeakerCardProps = {
     isLoading?: boolean;
 };
 
-export default function SpeakerCard({ speaker, title, isLoading = true }: SpeakerCardProps) {
+export default function SpeakerCard({ speaker, title, isLoading = false }: SpeakerCardProps) {
     const [isActive, setIsActive] = useState(false);
 
     if (isLoading) {
