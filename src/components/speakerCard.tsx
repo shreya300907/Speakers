@@ -25,8 +25,8 @@ export default function SpeakerCard({ speaker, title }: SpeakerCardProps) {
                         ${isActive ? "blur-sm brightness-50" : ""}`}
                 />
                 <div className={`transition-opacity ease-out duration-500 absolute bottom-5 pl-4 flex flex-col gap-3
-                    opacity-0 group-hover:opacity-100
-                    ${isActive ? "opacity-100" : ""}`}
+                    group-hover:opacity-100
+                    ${isActive ? "opacity-100" : "opacity-0"}`}
                 >
                     <h2 className="text-xl font-semibold text-left text-white">{`${speaker}`}</h2>
                     <div className="text-zinc-300 text-xs ">
@@ -37,9 +37,9 @@ export default function SpeakerCard({ speaker, title }: SpeakerCardProps) {
                     </button>
                 </div>
             </div>
-            <h2 className={`text-xl font-semibold text-left pl-4 py-2 text-red-500 tracking-[0.3rem] transition-colors duration-300
+            <h2 className={`text-xl font-semibold text-left pl-4 py-2 tracking-wider transition-colors duration-300
                 group-hover:text-black
-                ${isActive ? "text-black" : ""}`}
+                ${isActive ? "text-black" : "text-red-500"}`}
             >
                 {`${speaker}`}
             </h2>
