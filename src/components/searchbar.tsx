@@ -1,21 +1,45 @@
 "use client"
+
 import { Search } from "lucide-react";
 import SpeakerSection from "./speakerSection";
-import { speakers } from "@/data/mockSpeakers";
-import { SetStateAction, useState } from "react";
+import { useEffect, useState } from "react";
 import { speakerServices } from "@/services/speakerServices";
+import { Speaker } from "@/types/speakers";
 
 export default function SearchBar() {
-    const [reqSpeakers, setSpeakers] = useState(speakers);
-    const [inputData, setInputData] = useState("");
-    const [loading, setLoading] = useState(false);
+
+    const [reqSpeakers, setSpeakers] =
+        useState<Speaker[]>([]);
+
+    const [inputData, setInputData] =
+        useState("");
+
+    const [loading, setLoading] =
+        useState(false);
+
+    useEffect(() => {
+
+        async function fetchSpeakers() {
+
+            setLoading(true);
+
+            const speakers =
+                await speakerServices.getSpeakers();
+
+            setSpeakers(speakers);
+
+            setLoading(false);
+        }
+
+        fetchSpeakers();
+
+    }, []);
     let handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const text = event.target.value;
         setInputData(text);
         setLoading(true);
         const result = await speakerServices.getSpeakersByName(text);
         setSpeakers(result);
-        setLoading(false);
     }
 
     const handleSelectChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -31,7 +55,7 @@ export default function SearchBar() {
             const result = await speakerServices.getPastSpeakers()
             setSpeakers(result);
         } else {
-            const result = await speakerServices.getSpeakersByYear(filter)
+            const result = await speakerServices.getPastSpeakers()
             setSpeakers(result);
         }
         setLoading(false);

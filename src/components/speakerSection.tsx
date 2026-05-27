@@ -1,4 +1,4 @@
-import { Speaker } from "@/data/mockSpeakers";
+import { Speaker } from "@/data/speakers";
 import SpeakerCard from "./speakerCard";
 
 export default function SpeakerSection({ speakers, isLoading }: { speakers: Speaker[]; isLoading: boolean }) {
