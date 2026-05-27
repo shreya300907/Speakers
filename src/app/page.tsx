@@ -1,8 +1,6 @@
 import SearchBar from "@/components/searchbar";
 import SpeakerCard from "@/components/speakerCard";
 import Image from "next/image";
-import { speakers } from "@/data/speakers"
-import SpeakerSection from "@/components/speakerSection";
 
 export default function Home() {
   return (
